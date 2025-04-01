@@ -12,6 +12,9 @@ use access_control::transfer::TransferOwnershipTrait;
 use upgrade::events::Events as UpgradeEvents;
 use upgrade::{apply_upgrade, commit_upgrade, revert_upgrade};
 
+#[cfg(feature = "certora")]
+use crate::certora_specs::ACCESS_CONTROL;
+
 #[contract]
 pub struct FeesCollector;
 
@@ -28,6 +31,10 @@ impl AdminInterface for FeesCollector {
             panic_with_error!(&e, AccessControlError::AdminAlreadySet);
         }
         access_control.set_role_address(&Role::Admin, &account);
+        #[cfg(feature = "certora")]
+        unsafe {
+            ACCESS_CONTROL = Some(access_control.clone());
+        }
     }
 }
 

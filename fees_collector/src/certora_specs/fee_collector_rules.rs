@@ -6,11 +6,17 @@ use cvlr_soroban_derive::rule;
 use cvlr_soroban::nondet_address;
 
 pub use crate::contract::FeesCollector;
+use access_control::access::AccessControl;
+use access_control::role::Role;
+use access_control::management::SingleAddressManagementTrait;
 use crate::interface::{AdminInterface, UpgradeableContract};
 
+use crate::certora_specs::ACCESS_CONTROL;
+
 #[rule]
-pub fn sanity(e: Env) {
+pub fn init_admin_sets_admin(e: Env) {
     let address = nondet_address();
-    let fee_collector = FeesCollector::init_admin(e, address);
-    cvlr_assert!(false);
+    let fee_collector = FeesCollector::init_admin(e, address.clone());
+    let addr = unsafe { ACCESS_CONTROL.clone().unwrap().get_role(&Role::Admin) };
+    cvlr_assert!(addr == address);
 }
