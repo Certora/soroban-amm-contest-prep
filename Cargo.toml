@@ -23,8 +23,8 @@ version = "1.2.0"
 rust-version = "1.80"
 
 [workspace.dependencies]
-soroban-sdk = { version = "21.6.0" }
-soroban-token-sdk = { version = "21.6.0" }
+soroban-sdk = { version = "22.0.7" }
+soroban-token-sdk = { version = "22.0.7" }
 num-integer = { version = "0.1.45", default-features = false, features = ["i128"] }
 soroban-fixed-point-math = { version = "1.1.1"}
 paste = { version = "1.0.15" }
@@ -41,7 +41,7 @@ liquidity-pool-events = { path = "liquidity_pool_events" }
 opt-level = "z"
 overflow-checks = true
 debug = 0
-strip = "symbols"
+strip = "none"
 debug-assertions = false
 panic = "abort"
 codegen-units = 1
@@ -50,3 +50,16 @@ lto = true
 [profile.release-with-logs]
 inherits = "release"
 debug-assertions = true
+
+[workspace.dependencies.cvlr]
+git = "https://github.com/Certora/cvlr.git"
+default-features = false
+
+[workspace.dependencies.cvlr-soroban]
+git = "https://github.com/Certora/cvlr-soroban.git"
+
+[workspace.dependencies.cvlr-soroban-macros]
+git = "https://github.com/Certora/cvlr-soroban.git"
+
+[workspace.dependencies.cvlr-soroban-derive]
+git = "https://github.com/Certora/cvlr-soroban.git"
