@@ -41,7 +41,7 @@ liquidity-pool-events = { path = "liquidity_pool_events" }
 opt-level = "z"
 overflow-checks = true
 debug = 0
-strip = "none"
+strip = "symbols"
 debug-assertions = false
 panic = "abort"
 codegen-units = 1
