@@ -36,6 +36,7 @@ Note that some setup work and basic properties are already being provided by the
   - Follow [installation instructions](https://docs.certora.com/en/latest/docs/sunbeam/installation.html) to download `certora-cli`. Use the latest version of the tool available at the start of the contest, throughout the whole contest.
 - **Learning Resources**: 
   - Complete the [tutorials](https://certora-sunbeam-tutorials.readthedocs-hosted.com/en/latest/).
+  - See below in this doc for additional help.
   - Search the [docs](https://docs.certora.com/en/latest/docs/sunbeam/index.html) for any additional information.
 - **Contest Participation**:
   - [Import](https://github.com/new/import) this repository into a new private repository at the contest's commencement.
@@ -141,3 +142,10 @@ Note that some setup work and basic properties are already being provided by the
     - Reduce overuse of `cvlr_assume!` statements.
     - Ensure clear documentation, proper naming, and formatting.
 - **Participant Contributions**: The top participants' `certora` folders will be included in the public repository.
+
+## Notes and Tips
+- We have provided a couple of example rules to help get started: `fees_collector/src/certora_specs/fee_collector_rules.rs`
+- Notice the use of `clog!` for logging different values. You can use it for signed and unsigned integers (32, 64, 128 bit), and `Address` (see usage for `Address` in the rule `init_admin_sets_admin`).
+- You can see how to create ghost variables by looking at the variable `ACCESS_CONTROL` and its updates.
+- You can see the spec language we used [here](https://github.com/Certora/cvlr) and [here](https://github.com/Certora/cvlr-soroban).
+- For debugging, we recommend running one rule at a time by changing the `rule` field in the `conf` files.
