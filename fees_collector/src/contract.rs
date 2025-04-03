@@ -105,7 +105,17 @@ impl UpgradeableContract for FeesCollector {
     // * `value` - The value to set the emergency mode to.
     fn set_emergency_mode(e: Env, emergency_admin: Address, value: bool) {
         emergency_admin.require_auth();
-        AccessControl::new(&e).assert_address_has_role(&emergency_admin, &Role::EmergencyAdmin);
+        /*
+        Certora-Sunbeam: Changed below from:
+            AccessControl::new(&e).assert_address_has_role(&emergency_admin, &Role::EmergencyAdmin);
+            to enable assigning to a ghost variable for verification.
+         */
+        let access_control = AccessControl::new(&e);
+        #[cfg(feature = "certora")]
+        unsafe {
+            ACCESS_CONTROL = Some(access_control.clone());
+        }
+        access_control.assert_address_has_role(&emergency_admin, &Role::EmergencyAdmin);
         set_emergency_mode(&e, &value);
         AccessControlEvents::new(&e).set_emergency_mode(value);
     }
