@@ -4,3 +4,4 @@ target
 .soroban
 .idea
 test_snapshots
+**/.certora_internal/*

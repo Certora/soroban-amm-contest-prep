@@ -52,7 +52,7 @@ inherits = "release"
 debug-assertions = true
 
 [workspace.dependencies.cvlr]
-git = "https://github.com/Certora/cvlr.git"
+version = "0.4.0"
 default-features = false
 
 [workspace.dependencies.cvlr-soroban]
