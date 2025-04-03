@@ -36,7 +36,7 @@ Note that some setup work and basic properties are already being provided by the
   - Follow [installation instructions](https://docs.certora.com/en/latest/docs/sunbeam/installation.html) to download `certora-cli`. Use the latest version of the tool available at the start of the contest, throughout the whole contest.
 - **Learning Resources**: 
   - Complete the [tutorials](https://certora-sunbeam-tutorials.readthedocs-hosted.com/en/latest/).
-  - See below in this doc for additional help.
+  - See [below](https://github.com/Certora/soroban-amm-contest-prep/blob/contest-prep/CONTEST.md#notes-and-tips) in this doc for additional help.
   - Search the [docs](https://docs.certora.com/en/latest/docs/sunbeam/index.html) for any additional information.
 - **Contest Participation**:
   - [Import](https://github.com/new/import) this repository into a new private repository at the contest's commencement.
