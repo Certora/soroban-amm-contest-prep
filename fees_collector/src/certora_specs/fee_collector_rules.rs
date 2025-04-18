@@ -9,6 +9,7 @@ pub use crate::contract::FeesCollector;
 use access_control::role::Role;
 use access_control::management::SingleAddressManagementTrait;
 use access_control::access::AccessControlTrait;
+use access_control::emergency::{get_emergency_mode, set_emergency_mode};
 
 use crate::interface::{AdminInterface, UpgradeableContract};
 
@@ -31,4 +32,11 @@ pub fn only_emergency_admin_sets_emergency_mode(e: Env) {
     cvlr_assume!(unsafe{!ACCESS_CONTROL.clone().unwrap().address_has_role(&address, &Role::EmergencyAdmin)});
     FeesCollector::set_emergency_mode(e, address, value);
     cvlr_assert!(false); // should not reach and therefore should pass
+}
+
+#[rule]
+pub fn set_emergency_mode_success(e: Env) {
+    let value: bool = cvlr::nondet();
+    access_control::emergency::set_emergency_mode(&e, &value);
+    cvlr_assert!(access_control::emergency::get_emergency_mode(&e) == false);
 }
