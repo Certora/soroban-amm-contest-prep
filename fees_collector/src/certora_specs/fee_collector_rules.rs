@@ -38,5 +38,5 @@ pub fn only_emergency_admin_sets_emergency_mode(e: Env) {
 pub fn set_emergency_mode_success(e: Env) {
     let value: bool = cvlr::nondet();
     access_control::emergency::set_emergency_mode(&e, &value);
-    cvlr_assert!(access_control::emergency::get_emergency_mode(&e) == false);
+    cvlr_assert!(access_control::emergency::get_emergency_mode(&e) == value);
 }
