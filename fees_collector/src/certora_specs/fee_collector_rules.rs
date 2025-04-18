@@ -15,6 +15,10 @@ use crate::interface::{AdminInterface, UpgradeableContract};
 
 use crate::certora_specs::ACCESS_CONTROL;
 
+/**
+ * These are some example rules to help get started.
+*/
+
 #[rule]
 pub fn init_admin_sets_admin(e: Env) {
     let address = nondet_address();
@@ -33,6 +37,7 @@ pub fn only_emergency_admin_sets_emergency_mode(e: Env) {
     FeesCollector::set_emergency_mode(e, address, value);
     cvlr_assert!(false); // should not reach and therefore should pass
 }
+
 
 #[rule]
 pub fn set_emergency_mode_success(e: Env) {
