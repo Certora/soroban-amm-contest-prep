@@ -71,7 +71,7 @@ Note that some setup work and basic properties are already being provided by the
   - **Coverage**: 70% of pool awarded for properties identifying private mutants.
 - If no properties are accepted for real bugs, the pool will be rebalanced to 90% coverage and 10% participation.
 - Mutants are mutated versions of the original code which create vulnerabilities. These mutants are used to gauge verified properties' coverage of the original code.
-  - Public mutants used for evaluating participation rewards can be found in `backstop/mutations`.
+  - Public mutants used for evaluating participation rewards can be found in `fees_collector/mutations`.
 - Participation and coverage reward can be calculated as follows
     - Each mutant is worth $0.9^{n-1}$ points where $n$ is the number of participants that caught the mutant.
     - If we let $P$ be the total FV pool and $T$ be the sum of all mutants' points, we can define each participant's reward as $ \frac{P}{T} \cdot \frac{0.9^{n-1}}{n} $
@@ -127,6 +127,8 @@ Note that some setup work and basic properties are already being provided by the
 - **Preliminary Results**: Initial findings will be announced along with the mutations used for evaluation. A google sheet showing which mutants were caught by which participants will be shared. Participants will have a 72-hour period for review and submit corrections in case a certain mutant is marked as not caught but they actually caught it.
 - **Correction Submissions**: Corrections must include a verified run on the source code and a violated run on the mutant. Any changes other than the mutation will result in exclusion of the correction.
 - **Check your work**: Copy the mutants from `fees_collector/mutations` one at a time to the relevant directory and check that your spec catches them.
+    - Mutants `contract_0.rs` and `contract_1.rs` should be used to replace `fees_collector/src/contract.rs`.
+    - Mutant `emergency_0.rs` should be used to replace `access_control/src/emergency.rs`.
 - **Mutant Removal**: Certora reserves the right to remove any mutants that are caught only by low-value rules. This ensures that participants focus on creating valuable and secure rules rather than just catching mutations.
 - **Reward Distribution**: If both low-quality and high-quality rules catch a mutation, rewards will be distributed normally.
 
