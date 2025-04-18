@@ -17,7 +17,8 @@ Note that some setup work and basic properties are already being provided by the
 
 | Rust files | 
 | --- |
-| All files in the [fees_collector](https://github.com/AquaToken/soroban-amm/tree/master/fees_collector) crate.
+| All files in the [fees_collector](https://github.com/AquaToken/soroban-amm/tree/master/fees_collector) crate |
+| All files in the [access_control](https://github.com/AquaToken/soroban-amm/tree/master/access_control) crate |
 
 
 
@@ -48,15 +49,14 @@ Note that some setup work and basic properties are already being provided by the
   - For FV contest questions, use the relevant community verification channel in Discord.
 - **Certora folder**:
   - Certora infrastructure is made up of 5 folders listed below.
-    - `fees_collector/confs`: configuration files for the tool. One per rust file in scope is provided. More can be added if needed.
-    - `fees_collector/src/certora_specs`: any specs you write should go here. One per rust file in scope is provided. 
+    - `fees_collector/confs`: configuration files for the tool. One example file is provided. More can be added if needed.
+    - `fees_collector/src/certora_specs`: any specs you write should go here. You can add as many files are needed.
     - `fees_collector/src/certora_specs/summaries`: functions that need to be summarized for verification.
     - `fees_collector/src/certora_specs/mocks`: mock implementations needed for verification.
     - `fees_collector/mutations`: mutants folder which will be used to evaluate specs.
 - **Compiling**:
-  - All the changes you need to make should be in `fees_collector`.
   - To compile you code, run `just build` from the `fees_collector` directory.
-  - To run the prover with some conf file do the following:
+  - To run the prover with some `conf` file do the following:
   ```
   cd confs
   certoraSorobanProver FILENAME.conf
