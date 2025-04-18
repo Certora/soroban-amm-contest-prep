@@ -9,7 +9,6 @@ pub use crate::contract::FeesCollector;
 use access_control::role::Role;
 use access_control::management::SingleAddressManagementTrait;
 use access_control::access::AccessControlTrait;
-use access_control::emergency::{get_emergency_mode, set_emergency_mode};
 
 use crate::interface::{AdminInterface, UpgradeableContract};
 
