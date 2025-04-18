@@ -126,7 +126,7 @@ Note that some setup work and basic properties are already being provided by the
 ## Evaluation Process
 - **Preliminary Results**: Initial findings will be announced along with the mutations used for evaluation. A google sheet showing which mutants were caught by which participants will be shared. Participants will have a 72-hour period for review and submit corrections in case a certain mutant is marked as not caught but they actually caught it.
 - **Correction Submissions**: Corrections must include a verified run on the source code and a violated run on the mutant. Any changes other than the mutation will result in exclusion of the correction.
-- **Check your work**: Copy the mutants from `fees_collector/mutations` one at a time to the relevant directory and check that your spec catches them.
+- **Check your work**: Copy the mutants from `fees_collector/mutations` one at a time to the relevant directory and check that your spec catches them. You can search for the word "MUTANT" in each file to see the change.
     - Mutants `contract_0.rs` and `contract_1.rs` should be used to replace `fees_collector/src/contract.rs`.
     - Mutant `emergency_0.rs` should be used to replace `access_control/src/emergency.rs`.
 - **Mutant Removal**: Certora reserves the right to remove any mutants that are caught only by low-value rules. This ensures that participants focus on creating valuable and secure rules rather than just catching mutations.
