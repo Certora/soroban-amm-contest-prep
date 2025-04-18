@@ -50,7 +50,7 @@ Note that some setup work and basic properties are already being provided by the
 - **Certora folder**:
   - Certora infrastructure is made up of 5 folders listed below.
     - `fees_collector/confs`: configuration files for the tool. One example file is provided. More can be added if needed.
-    - `fees_collector/src/certora_specs`: any specs you write should go here. You can add as many files are needed.
+    - `fees_collector/src/certora_specs`: any specs you write should go here. You can add as many files as needed.
     - `fees_collector/src/certora_specs/summaries`: functions that need to be summarized for verification.
     - `fees_collector/src/certora_specs/mocks`: mock implementations needed for verification.
     - `fees_collector/mutations`: mutants folder which will be used to evaluate specs.
