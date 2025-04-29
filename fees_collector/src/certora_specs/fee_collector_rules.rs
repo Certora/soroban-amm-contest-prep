@@ -10,7 +10,8 @@ use access_control::role::Role;
 use access_control::management::SingleAddressManagementTrait;
 use access_control::access::AccessControlTrait;
 
-use crate::interface::{AdminInterface, UpgradeableContract};
+use crate::interface::AdminInterface;
+use upgrade::interface::UpgradeableContract;
 
 use crate::certora_specs::ACCESS_CONTROL;
 
