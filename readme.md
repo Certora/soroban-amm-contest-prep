@@ -49,6 +49,7 @@
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#competitive-audit">Competitive Audit</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -146,7 +147,6 @@ We plan to use Soroban to build Automated Market Maker (AMM) smart contracts and
 - [soroban cli](https://github.com/stellar/soroban-tools)
 
 ### Development setup
-Project built using django framework, so setup is similar to generic django project.
 
 #### Clone project
 `git clone git@github.com:AquaToken/soroban-amm.git`
@@ -207,6 +207,15 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+
+<!-- AUDIT -->
+## Competitive Audit
+
+Auditors are expected to demonstrate each finding with code.  To make that painless we ship an end‑to‑end test harness that deploys clean contracts and lets you focus on writing failing assertions. Just edit `integration_tests/src/tests.rs`
+```
+# run the whole suite (faster with --release)
+$ cargo test -p integration-tests
+```
 
 
 <!-- CONTACT -->

@@ -10,10 +10,8 @@ pub fn install_dummy_wasm<'a>(e: &Env) -> BytesN<32> {
 }
 
 fn create_plane_contract<'a>(e: &Env) -> LiquidityPoolPlaneClient<'a> {
-    let client = LiquidityPoolPlaneClient::new(
-        e,
-        &e.register_contract(None, crate::contract::LiquidityPoolPlane {}),
-    );
+    let client =
+        LiquidityPoolPlaneClient::new(e, &e.register(crate::contract::LiquidityPoolPlane {}, ()));
     client
 }
 
@@ -43,7 +41,7 @@ impl Default for Setup<'_> {
     fn default() -> Self {
         let env = Env::default();
         env.mock_all_auths();
-        env.budget().reset_unlimited();
+        env.cost_estimate().budget().reset_unlimited();
 
         let admin = Address::generate(&env);
         let plane = create_plane_contract(&env);
