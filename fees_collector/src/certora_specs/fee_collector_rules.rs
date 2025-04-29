@@ -34,7 +34,7 @@ pub fn only_emergency_admin_sets_emergency_mode(e: Env) {
     let address = nondet_address();
     let value: bool = cvlr::nondet();
     let acc_ctrl = unsafe { &mut *&raw mut ACCESS_CONTROL };
-    cvlr_assume!(acc_ctrl.as_ref().unwrap().address_has_role(&address, &Role::EmergencyAdmin));
+    cvlr_assume!(!acc_ctrl.as_ref().unwrap().address_has_role(&address, &Role::EmergencyAdmin));
     FeesCollector::set_emergency_mode(e, address, value);
     cvlr_assert!(false); // should not reach and therefore should pass
 }
