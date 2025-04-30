@@ -39,6 +39,7 @@ upgrade = { path = "upgrade"}
 liquidity-pool-validation-errors = { path = "liquidity_pool_validation_errors" }
 liquidity-pool-events = { path = "liquidity_pool_events" }
 
+
 [profile.release]
 opt-level = "z"
 overflow-checks = true
@@ -52,3 +53,16 @@ lto = true
 [profile.release-with-logs]
 inherits = "release"
 debug-assertions = true
+
+[workspace.dependencies.cvlr]
+version = "0.4.0"
+default-features = false
+
+[workspace.dependencies.cvlr-soroban]
+git = "https://github.com/Certora/cvlr-soroban.git"
+
+[workspace.dependencies.cvlr-soroban-macros]
+git = "https://github.com/Certora/cvlr-soroban.git"
+
+[workspace.dependencies.cvlr-soroban-derive]
+git = "https://github.com/Certora/cvlr-soroban.git"

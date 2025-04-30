@@ -1,6 +1,6 @@
 use soroban_sdk::{contract, contractimpl, panic_with_error, Address, BytesN, Env, Symbol, Vec};
 
-use crate::interface::AdminInterface;
+use crate::interface::{AdminInterface, UpgradeableContract};
 use access_control::access::{AccessControl, AccessControlTrait};
 use access_control::emergency::{get_emergency_mode, set_emergency_mode};
 use access_control::errors::AccessControlError;
@@ -10,7 +10,6 @@ use access_control::management::SingleAddressManagementTrait;
 use access_control::role::{Role, SymbolRepresentation};
 use access_control::transfer::TransferOwnershipTrait;
 use upgrade::events::Events as UpgradeEvents;
-use upgrade::interface::UpgradeableContract;
 use upgrade::{apply_upgrade, commit_upgrade, revert_upgrade};
 
 #[cfg(feature = "certora")]
@@ -31,7 +30,7 @@ impl AdminInterface for FeesCollector {
         if access_control.get_role_safe(&Role::Admin).is_some() {
             panic_with_error!(&e, AccessControlError::AdminAlreadySet);
         }
-        access_control.set_role_address(&Role::Admin, &account);
+        // access_control.set_role_address(&Role::Admin, &account); MUTANT
         #[cfg(feature = "certora")]
         unsafe {
             ACCESS_CONTROL = Some(access_control.clone());
@@ -48,7 +47,7 @@ impl UpgradeableContract for FeesCollector {
     //
     // The version of the contract as a u32.
     fn version() -> u32 {
-        150
+        140
     }
 
     // Commits a new wasm hash for a future upgrade.

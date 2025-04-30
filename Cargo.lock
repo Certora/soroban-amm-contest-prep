@@ -196,6 +196,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8c3c1a368f70d6cf7302d78f8f7093da241fb8e8807c05cc9e51a125895a6d5b"
 
 [[package]]
+name = "bitflags"
+version = "2.9.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5c8214115b7bf84099f1309324e63141d4c5d7cc26862f97a0a857dbefe165bd"
+
+[[package]]
 name = "block-buffer"
 version = "0.10.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -340,6 +346,116 @@ dependencies = [
  "quote",
  "syn 2.0.96",
 ]
+
+[[package]]
+name = "cvlr"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0411617d16997708dd6551dc8b9d861798331b0871d4ff6ff0fce8f7b486ed75"
+dependencies = [
+ "cvlr-asserts",
+ "cvlr-early-panic",
+ "cvlr-hook",
+ "cvlr-log",
+ "cvlr-macros",
+ "cvlr-mathint",
+ "cvlr-nondet",
+]
+
+[[package]]
+name = "cvlr-asserts"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "726eb8537abb9e0ba3e09dade092f5da210b42e7852d78cc771c1d936749f0dd"
+
+[[package]]
+name = "cvlr-early-panic"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dcfc9ae17fe2736886c14a6dd9b03f5b69097919d4b699726730f3aa8e287d14"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.96",
+]
+
+[[package]]
+name = "cvlr-hook"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4cc6fc3736df35bacca99a41f48c2a2c4ec4c177bdc755c427c75a6ed297dcf8"
+dependencies = [
+ "quote",
+ "syn 2.0.96",
+]
+
+[[package]]
+name = "cvlr-log"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cfbcdd22d4b77b1b6c625d344f4b3bf3b82c32fa4e99d324c5d7a28c0b3248c0"
+dependencies = [
+ "cvlr-mathint",
+]
+
+[[package]]
+name = "cvlr-macros"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b8651ff67bc74ff918249f8ef1d92142e28e7da6c7d3066b9a797686ef56470e"
+dependencies = [
+ "darling",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.96",
+]
+
+[[package]]
+name = "cvlr-mathint"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bb94e0fc4b0bcaf1f9363c08bb43535f105b243c63014762e30575ad850be58c"
+dependencies = [
+ "cvlr-asserts",
+ "cvlr-nondet",
+]
+
+[[package]]
+name = "cvlr-nondet"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "207b941a8d3fa7f923791b22a3acfdc2051b6b9df32b9d87edaec9fba0a72156"
+dependencies = [
+ "cvlr-asserts",
+]
+
+[[package]]
+name = "cvlr-soroban"
+version = "0.4.0"
+source = "git+https://github.com/Certora/cvlr-soroban.git#3e8f9e4d8d0a40789c83302f7537148bc9014e17"
+dependencies = [
+ "cvlr-asserts",
+ "cvlr-log",
+ "cvlr-nondet",
+ "soroban-sdk",
+]
+
+[[package]]
+name = "cvlr-soroban-derive"
+version = "0.4.0"
+source = "git+https://github.com/Certora/cvlr-soroban.git#3e8f9e4d8d0a40789c83302f7537148bc9014e17"
+dependencies = [
+ "darling",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.96",
+ "uuid",
+]
+
+[[package]]
+name = "cvlr-soroban-macros"
+version = "0.4.0"
+source = "git+https://github.com/Certora/cvlr-soroban.git#3e8f9e4d8d0a40789c83302f7537148bc9014e17"
 
 [[package]]
 name = "darling"
@@ -564,8 +680,20 @@ dependencies = [
  "cfg-if",
  "js-sys",
  "libc",
- "wasi",
+ "wasi 0.11.0+wasi-snapshot-preview1",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "getrandom"
+version = "0.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "73fea8450eea4bac3940448fb7ae50d91f034f941199fcd9d909a5a07aa455f0"
+dependencies = [
+ "cfg-if",
+ "libc",
+ "r-efi",
+ "wasi 0.14.2+wasi-0.2.4",
 ]
 
 [[package]]
@@ -735,9 +863,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.151"
+version = "0.2.172"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "302d7ab3130588088d277783b1e2d2e10c9e9e4a16dd9050e6ec93fb3e7048f4"
+checksum = "d750af042f7ef4f724306de029d18836c26c1765a54a6a3f094cbd23a7267ffa"
 
 [[package]]
 name = "libm"
@@ -901,6 +1029,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "r-efi"
+version = "5.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "74765f6d916ee2faa39bc8e68e4f3ed8949b48cccdac59983d287a7cb71ce9c5"
+
+[[package]]
 name = "rand"
 version = "0.8.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -927,7 +1061,7 @@ version = "0.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
 dependencies = [
- "getrandom",
+ "getrandom 0.2.11",
 ]
 
 [[package]]
@@ -1136,7 +1270,7 @@ dependencies = [
  "ed25519-dalek",
  "elliptic-curve",
  "generic-array",
- "getrandom",
+ "getrandom 0.2.11",
  "hex-literal",
  "hmac",
  "k256",
@@ -1177,6 +1311,10 @@ name = "soroban-fees-collector-contract"
 version = "1.5.0"
 dependencies = [
  "access_control",
+ "cvlr",
+ "cvlr-soroban",
+ "cvlr-soroban-derive",
+ "cvlr-soroban-macros",
  "soroban-sdk",
  "upgrade",
 ]
@@ -1561,6 +1699,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "uuid"
+version = "1.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "458f7a779bf54acc9f347480ac654f68407d3aab21269a6e3c9f922acd9e2da9"
+dependencies = [
+ "getrandom 0.3.2",
+]
+
+[[package]]
 name = "version_check"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1571,6 +1718,15 @@ name = "wasi"
 version = "0.11.0+wasi-snapshot-preview1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
+
+[[package]]
+name = "wasi"
+version = "0.14.2+wasi-0.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9683f9a5a998d873c0d21fcbe3c083009670149a8fab228644b8bd36b2c48cb3"
+dependencies = [
+ "wit-bindgen-rt",
+]
 
 [[package]]
 name = "wasm-bindgen"
@@ -1728,6 +1884,15 @@ name = "windows_x86_64_msvc"
 version = "0.48.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538"
+
+[[package]]
+name = "wit-bindgen-rt"
+version = "0.39.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6f42320e61fe2cfd34354ecb597f86f413484a798ba44a8ca1165c58d42da6c1"
+dependencies = [
+ "bitflags",
+]
 
 [[package]]
 name = "zerocopy"
